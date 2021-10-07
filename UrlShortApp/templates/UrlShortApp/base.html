@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'UrlShortApp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'UrlShortApp/css/font.css' %}" rel="stylesheet">
+    <script src="{% static 'UrlShortApp/js/bootstrap.bundle.min.js' %}"></script>
+    <title>Link Shortener</title>
+</head>
+
+<body>
+<header>
+  <div class="collapse" id="navbarHeader" style="background-color:#F7DC6F;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-dark fw-bold my-font">About</h4>
+          <p class="text-dark fw-normal my-font">This is a free URL shortener for transforming long, ugly links into nice, memorable and trackable short URLs.<br>Created with <a href="https://cutt.ly/cuttly-api">Cutt.ly API.</a></p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-dark fw-bold my-font">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://github.com/zoot-nix" class="text-dark fw-light my-font">Follow on Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-light shadow-sm" style="background-color:#F7DC6F;">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <strong class="fw-bold my-font">Shorten your url here!</strong>
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+    <div class="container mt-5">
+        <h1 class="mx-5 my-font">URL Shortener</h1>
+        <form action="short" method="POST">
+        {% csrf_token %}
+            <div class="mt-4 mx-5">
+                <label class="form-label my-font">Enter Url</label>
+                <input type="text" class="form-control" name="my_url" placeholder="Enter link here">
+            </div>
+            <div class="mt-5 d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-warning btn-lg my-font">Shorten URL</button>
+            </div>
+        </form>
+         {% block content %}
+
+        {% endblock %}
+    </div>
+    
+</body>
+
+</html>
